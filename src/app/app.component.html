@@ -1,1 +1,49 @@
 <h1 class="text-success text-center">Angular</h1>
+
+<div [ngStyle]="{background: count < 5 ? 'red': 'blue'}"
+      [ngClass]="{custom: count > 5}"
+>
+  <h2 class="text-center">Contador: {{count}}</h2>
+</div>
+
+<!-- Diretivas EStruturais -->
+
+<h2 *ngIf="count > 7; else menor">O Contador passou de 7!</h2>
+
+<ng-template #menor>
+    <h2>O Contador é menor que 7!</h2>
+</ng-template>
+
+<ul [ngSwitch]="count" class="list-group mx-auto col-3">
+  <li class="list-group-item" *ngSwitchCase="3">E igual a 3</li>
+  <li class="list-group-item" *ngSwitchCase="5">E igual a 5</li>
+  <li class="list-group-item" *ngSwitchCase="8">E igual a 8</li>
+  <li class="list-group-item" *ngSwitchDefault>Esse é o Default</li>
+</ul>
+
+<ul class="list-group mx-auto my-3 col-3">
+  <li class="list-group-item" *ngFor="let pessoa of pessoas">
+    O nome da pessoa é {{pessoa.nome}} {{pessoa.sobrenome}}.
+  </li>
+</ul>
+
+<ul class="list-group mx-auto my-3 col-3">
+  <ng-template ngFor let-pessoa [ngForOf]="pessoas">
+    <li class="list-group-item">
+      O nome da pessoa é {{pessoa.nome}} {{pessoa.sobrenome}}.
+    </li>
+  </ng-template>
+</ul>
+
+<!--<button class="btn btn-dark" (click)="clicou('Livia')">Clique Aqui</button>-->
+<div class="col-4 mx-auto my-3">
+  <h3 appMarcaTexto corDeFundo="blue" corDoTexto="black">{{ nome }}</h3>
+</div>
+<div class="col-4 mx-auto">
+  <input
+    type="text" class="form-control"
+    placeholder="Digita Aqui"
+    [(ngModel)]="text"
+  >
+  <h4>Saida: {{ text }}</h4>
+</div>
