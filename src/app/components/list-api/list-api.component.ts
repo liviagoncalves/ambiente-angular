@@ -7,7 +7,7 @@ import {ListService} from "../../shared/services/list.service";
   styleUrls: ['./list-api.component.css']
 })
 export class ListApiComponent implements OnInit {
-  personagens: Array<any>[];
+  personagens: Array<any> = [];
 
   constructor(private listService: ListService) { }
 
